@@ -43,14 +43,12 @@ app.get("/login", checkAuthenticated, (req, res) => {
 app.get("/", checkNotAuthenticated, async (req, res) => {
   const { id, nombre: user } = req.user
   const result = await pool.query(`SELECT * FROM tareas WHERE id_usuario = $1`, [id])
-  if (result.rowCount > 0) {
-    let tasks = result.rows
-    const tareas = tasks.map(task => {
-      return task.descripcion
-    })
-    res.render("dashboard", { user, tareas })
-  }
-
+  console.log(result.rows)
+  const tareas = result.rows.map(tarea => {
+    const descripcion = tarea.descripcion
+    return descripcion
+  })
+  res.render("dashboard", { user, tareas })
 })
 app.get("/register", checkAuthenticated, (req, res) => {
   res.render("register")
@@ -153,6 +151,29 @@ app.get("/delete", async (req, res) => {
 
   }
 })
+// app.get("/edit/:id", checkNotAuthenticated, async (req, res) => {
+//   const { id } = req.params
+//   console.log(id)
+//   const result = await pool.query(`SELECT * FROM tareas WHERE id_tarea = $1`, [id])
+//   console.log(result.rowCount)
+//   if (result.rowCount > 0) {
+//     res.render("edit", { list: result.rows[0] });
+//   } else {
+//     res.send("No se encontro una tarea con el id especificado")
+//   }
+// })
+// app.post("/edit/:id", checkNotAuthenticated, async (req, res) => {
+//   const { id } = req.params
+//   const { id_tarea, descripcion } = req.body
+//   await pool.query(`UPDATE tareas SET descripcion = $1 WHERE id_tarea = $2`, [descripcion, id])
+//   res.redirect("/")
+// })
+
+
+
+
+
+
 app.listen(PORT, () => {
   console.log(`Serving on port: ${PORT}`)
 })

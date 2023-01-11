@@ -22,11 +22,15 @@
   <ul>
     <% if(typeof tareas != "undefined" ) { %>
       <% tareas.forEach(tarea => { %>
-        <li>
-          <%= tarea %>
-        </li>
-        <a href="/edit">Edit</a>
-        <a href="/delete">Delete</a>
+        <div>
+          <input type="checkbox">
+          <li>
+            <%= tarea %>
+          </li>
+          <a href="/edit">Edit</a>
+          <a href="/delete">Delete</a>
+        </div>
+
       <%}) %>
     <% } %>    
   </ul>

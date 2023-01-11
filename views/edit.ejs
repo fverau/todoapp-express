@@ -8,10 +8,16 @@
 </head>
 <body>
   <h1>Editar Tarea</h1>
-  <form id="edit-form" action="/edit" method="PATCH">
-    <input type="hidden" name="id_tarea" value="<%= tarea[0].id_tarea %>">
-    <input type="text" name="descripcion" value="<%= tarea[0].descripcion %>">
-    <input type="submit" value="Editar Tarea">
+  <form action="/edit/<%= list.id_tarea %> " method="post">
+    <div>
+      <input type="hidden" name="id_tarea" value="<%= list.id_tarea %>">
+    </div>
+    <div>
+      <textarea name="descripcion" id="descripcion" placeholder="Nueva tarea" required cols="30" rows="2"><%= list.descripcion %> </textarea>
+    </div>
+    <div>
+      <input type="submit" value="Editar Tarea">
+    </div>
   </form>
   
 </body>
