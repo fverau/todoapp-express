@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+</head>
+<body>
+  <a href="/logout">Cerrar sesión</a>
+  <h1>Bienvenido <%= user %></h1>
+
+  <form action="/" method="post">
+    <div>
+      <input type="text" name="task" id="task" placeholder="¿Qué tienes que hacer?" required>
+      <input type="submit" value="Agregar tarea">
+    </div>
+  </form>
+
+  <h2>Tareas</h2>
+
+  <ul>
+    <% if(typeof tareas != "undefined" ) { %>
+      <% tareas.forEach(tarea => { %>
+        <li>
+          <%= tarea %>
+        </li>
+        <a href="/edit">Edit</a>
+        <a href="/delete">Delete</a>
+      <%}) %>
+    <% } %>    
+  </ul>
+
+
+</body>
+</html>

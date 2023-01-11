@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar tareas</title>
+</head>
+<body>
+  <h1>Editar Tarea</h1>
+  <form id="edit-form" action="/edit" method="PATCH">
+    <input type="hidden" name="id_tarea" value="<%= tarea[0].id_tarea %>">
+    <input type="text" name="descripcion" value="<%= tarea[0].descripcion %>">
+    <input type="submit" value="Editar Tarea">
+  </form>
+  
+</body>
+</html>

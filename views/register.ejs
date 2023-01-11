@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  <title>Register</title>
+</head>
+<body>
+  <h1>Register</h1>
+
+  <ul>
+    <% if(typeof errors != "undefined" ) { %>
+      <% errors.forEach(error => { %>
+        <li>
+          <%= error.message %>
+        </li>
+      <%}) %>
+    <% } %>
+  </ul>
+
+  <form action="/register" method="post">
+    <div>
+      <input type="text" id="name" name="name" placeholder="Nombre" required>
+    </div>
+    <div>
+      <input type="email" name="email" id="email" placeholder="Email" required>
+    </div>
+    <div>
+      <input type="password" name="password" id="password" placeholder="Contraseña" required>
+    </div>
+    <div>
+      <input type="password" name="password2" id="password2" placeholder="Repita su contraseña" required>
+    </div>
+    <div>
+      <input type="submit" value="Registrarse">
+    </div>
+    <p>¿Ya tienes cuenta? <a href="/">Click Aquí</a></p>
+  </form>
+</body>
+</html>

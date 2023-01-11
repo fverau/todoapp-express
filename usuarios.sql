@@ -1,0 +1,8 @@
+CREATE DATABASE usuariostodo;
+
+CREATE TABLE usuarios(
+  email VARCHAR(255) PRIMARY KEY NOT NULL,
+  nombre VARCHAR(255) NOT NULL,
+  contrasena VARCHAR(255) NOT NULL,
+  UNIQUE(email)
+);
